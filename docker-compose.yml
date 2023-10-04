@@ -1,0 +1,14 @@
+version: "3.9" #version del docker-compose syntax que usamos
+
+services: #bloque principal
+  app: #nobmre del servicio
+    build:
+      context: . # donde se construye el contenedor: el . indica el root directory
+      args:
+        - DEV=true
+    ports: # mapea el puerto de mi maquina con el de docker
+      - "8000:8000"
+    volumes: # mapea directorios de nuestro sistema al contenedor. nos permite que los cambios locales se hagan tmb en el contenedor
+      - ./app:/app
+    command: > # comando que se usa para correr el servicio. se puede sobreescribir, pero por defecto se ejecuta este
+      sh -c "python manage.py runserver 0.0.0.0:8000"

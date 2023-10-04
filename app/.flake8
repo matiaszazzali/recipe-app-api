@@ -1,0 +1,7 @@
+# archivo de configuracion de flake8. excluyo los archivos autogenerados.
+[flake8]
+exclude = 
+    migrations,
+    __pycache__,
+    manage.py,
+    setting.py
