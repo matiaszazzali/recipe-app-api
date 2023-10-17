@@ -14,9 +14,9 @@ services: #bloque principal
       sh -c "python manage.py runserver 0.0.0.0:8000"
     environment: #los nombres deben coincidir con los del servicio db
       - DB_HOST=db
-      - DEB_NAME=devdb
+      - DB_NAME=devdb
       - DB_USER=devuser
-      - DEB_PASS=changeme
+      - DB_PASS=changeme
     depends_on:
       - db
   
