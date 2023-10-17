@@ -11,7 +11,9 @@ services: #bloque principal
     volumes: # mapea directorios de nuestro sistema al contenedor. nos permite que los cambios locales se hagan tmb en el contenedor
       - ./app:/app
     command: > # comando que se usa para correr el servicio. se puede sobreescribir, pero por defecto se ejecuta este
-      sh -c "python manage.py runserver 0.0.0.0:8000"
+      sh -c "python manage.py wait_for_db &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
     environment: #los nombres deben coincidir con los del servicio db
       - DB_HOST=db
       - DB_NAME=devdb

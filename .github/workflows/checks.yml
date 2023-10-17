@@ -16,6 +16,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2 # action to access the code (made available for next steps)
       - name: Test
-        run: docker-compose run --rm app sh -c "python manage.py test" # run unit test
+        run: docker-compose run --rm app sh -c "python manage.py wait_for_db && manage.py test" # run unit test
       - name: Lint
         run: docker-compose run --rm app sh -c "flake8"
