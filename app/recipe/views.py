@@ -27,3 +27,9 @@ class RecipeViewSet(viewsets.ModelViewSet):
             return serializers.RecipeSerializer
 
         return self.serializer_class
+
+    # adds functionality to creation of recipe
+    def perform_create(self, serializer):
+        """Create a new recipe."""
+        serializer.save(user=self.request.user)
+        return super().perform_create(serializer)
