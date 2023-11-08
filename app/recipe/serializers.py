@@ -43,7 +43,8 @@ class RecipeDetailSerializer(RecipeSerializer):
     ingredients = IngredientSerializer(many=True, required=False)
 
     class Meta(RecipeSerializer.Meta):
-        fields = RecipeSerializer.Meta.fields + ['description', 'ingredients']
+        fields = RecipeSerializer.Meta.fields \
+            + ['description', 'ingredients', 'image']
 
     def _get_or_create_tags(self, tags, recipe):
         """Handle getting or creating tags as needed."""
